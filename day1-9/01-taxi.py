@@ -51,10 +51,7 @@ for i in directions:
             part2done=True
         # add current to visited
         visited.add(current)
-        #print("Visited: ", visited)
-        #print("Current: ", current)
-        #print("Direction: ", direction)
-        #print("Next: ", i)
+
 
 
 # calculate distance
