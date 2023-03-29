@@ -18,3 +18,9 @@ Disabled Copilot, not much use here. Good old copy-paste worked better.
 
 Two tasks. Part 1 was about calculating a checksum using an unusual algorithm. Counter object greatly simplified the code.
 Part 2 was a simple cypher - addition, subtraction and modulo is all that's needed.
+
+# Day 5: How About a Nice Game of Chess?
+
+We're generating password by making a lot of md5 hashes and extracting specific characters. Nothing special, there's a handy md5 function
+in hashlib module from the standard library. And for the text manipulation, as long as you remember the difference between int 0 and character "0"
+and between string and array of characters, you're gonna be fine.
