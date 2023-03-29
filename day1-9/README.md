@@ -11,3 +11,10 @@ Another Copilot experiment. Got the code almost right for part 1 and very wrong 
 # Day 3: Squares With Three Sides
 
 Again correct results from Copilot for part 1 only. For part 2, I ended up disabling it because it tried to write it in a completely different way. Shorter, arguably more elegant, but wrong. The code is still simple, but already too much for the AI.
+
+# Day 4: Security Through Obscurity
+
+Disabled Copilot, not much use here. Good old copy-paste worked better.
+
+Two tasks. Part 1 was about calculating a checksum using an unusual algorithm. Counter object greatly simplified the code.
+Part 2 was a simple cypher - addition, subtraction and modulo is all that's needed.
