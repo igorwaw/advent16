@@ -29,3 +29,13 @@ and between string and array of characters, you're gonna be fine.
 
 Two simple tasks. First, read input file and get columns instead of rows. Just the for loop over each line, nothing fancy.
 Second, for each column, get the most/least common letter. Counter from collections module is once again useful.
+
+# Day 7: Internet Protocol Version 7
+
+Regular expressions with backreferences for part 1. I hate them, though I seem to be getting better at them.
+
+But I couldn't write the right regexp for part 2. Instead, I found it easier to do some C-style coding in Python:
+process string as a character array and use a very simple state machine (with just 2 states: inside and
+outside the square brackets). I'm looking for all ABA blocks, store them in two sets (actually I just store AB),
+separately for inside and outside square brackets. Then it's just checking if the two sets have any elements in common.
+The important thing is to reverse characters for one of the sets.
