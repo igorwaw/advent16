@@ -39,3 +39,11 @@ process string as a character array and use a very simple state machine (with ju
 outside the square brackets). I'm looking for all ABA blocks, store them in two sets (actually I just store AB),
 separately for inside and outside square brackets. Then it's just checking if the two sets have any elements in common.
 The important thing is to reverse characters for one of the sets.
+
+# Day 8: Two-Factor Authentication
+
+Now that's more like it! First taste of unusal hardware: we have a list of instructions for the screen and need to find out what
+it would display. I used Numpy since it makes operations on 2D arrays both easier and faster. Granted, not by much in a simple
+example like this. I also packed the whole logic around display into a class and even used type hints - overkill for such a simple
+program.
+
