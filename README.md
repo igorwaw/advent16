@@ -10,10 +10,10 @@ required because I felt like it, for others I went straight to the point.
 
 ![Python](https://img.shields.io/badge/python-%3E%3D3.7-blue) 
 
-Task 1 requires Python 3.7 or higher because I used dataclass.
+Task 1 requires Python 3.7 or higher because I used a dataclass. Task 7 requires Python 3.8 because of walrus operator.
 All other programs should work with older versions of Python3 as well.
 
-Extra Python libraries: none now
+Extra Python libraries: Numpy for day 8
 
 
 ## AI powered
