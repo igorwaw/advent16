@@ -21,8 +21,7 @@ with open(INPUTFILE) as f:
         lines.append([ int(i) for i in line.split() ])
         if len(lines)>=3:
             # process a triangle
-            for i in range(3):
-                triangles.append([ lines[0][i], lines[1][i], lines[2][i] ])
+            triangles.extend([ lines[0][i], lines[1][i], lines[2][i] ] for i in range(3))
             lines=[]
 #print(triangles)
 for sides in triangles:

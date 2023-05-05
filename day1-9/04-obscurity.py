@@ -36,8 +36,7 @@ def decrypt_name(name, sector):
 sum_sector=0
 with open(INPUTFILE) as f:
     for line in f:
-        roomsearch=rx1.search(line)
-        if roomsearch:
+        if roomsearch := rx1.search(line):
             roomname, roomsector, roomsum=roomsearch.groups()
             newsum=calculate_sum(roomname)
             if roomsum == newsum:
@@ -46,9 +45,6 @@ with open(INPUTFILE) as f:
                 #print(f"Correct room: {roomname}, sector {roomsector}, checksum {roomsum}, new name {newname}")
                 if "northpole" in newname:
                     print("Part 2, ID of northpole storage: ", roomsector)
-            else:
-                #print(f"Fake room: {roomname}, sector {roomsector}, checksum read {roomsum}, calculated {newsum}")
-                pass
         else:
             print("Wrong room format (or wrong regexp): ", line)
 print("Part 1, sum of sectors: ", sum_sector)

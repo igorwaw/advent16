@@ -19,15 +19,10 @@ message1=""
 message2=""
 
 
-for colnum,col in enumerate(inputcols):
+for col in inputcols:
     lettercount=Counter(col).most_common()
-    # counter counts letters, most_common()  returns list of tuples 
-    # with most common elements, first of tuple=most common letter, second=count of this letter
-    # [0] to extract first pair of the dict (most common) or [-1] to extract least common
-    # then [0] to extract first element of the tuple
     letter1=lettercount[0][0]
     letter2=lettercount[-1][0]
-    #print(f"column {colnum}: {col}, most common {letter1} least common {letter2}")
     message1+=letter1
     message2+=letter2
 

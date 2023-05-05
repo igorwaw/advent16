@@ -31,14 +31,13 @@ def check_ssl(line):
     for i in range(len(line)-2): # we're looking 2 characters ahead from current index
         if line[i]=="[":
             in_hyper_block=True
-        elif line[i]=="]":
+        elif line[i]=="]": 
             in_hyper_block=False
-        else:
-             if line[i]==line[i+2] and line[i]!=line[i+1]:  # found aba block
-                if in_hyper_block:
-                    hyper_matches.add(line[i]+line[i+1])
-                else:
-                    no_hyper_matches.add(line[i+1]+line[i]) # reverse block
+        elif line[i]==line[i+2] and line[i]!=line[i+1]:   # found aba block
+            if in_hyper_block:
+                hyper_matches.add(line[i]+line[i+1])
+            else:
+                no_hyper_matches.add(line[i+1]+line[i]) # reverse block
         if hyper_matches & no_hyper_matches:
             return True
     return False

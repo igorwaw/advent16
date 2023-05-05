@@ -17,8 +17,6 @@ with open(INPUTFILE) as f:
     directions=line.split(", ")
 
 
-
-# start at origin
 current=Point(0,0)
 visited=set()
 visited.add(current)
