@@ -8,17 +8,20 @@ required because I felt like it, for others I went straight to the point.
 
 ## Technology used
 
-![Python](https://img.shields.io/badge/python-%3E%3D3.7-blue) 
+![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue) 
 
-Task 1 requires Python 3.7 or higher because I used a dataclass. Task 7 requires Python 3.8 because of walrus operator.
-All other programs should work with older versions of Python3 as well.
+I solved all puzzles with Python. Tested with 3.10 and with 3.6 where possible, most should work with any Python3. I use the following
+features of modern Python:
+
+* dataclasses (introduced in 3.7) - day 1
+* walrus operator (introduced in 3.8) - day 4 and 7
 
 Extra Python libraries: Numpy for day 8
 
 
 ## AI powered
 
-For this edition I experimented using Github Copilot to assist. From my experience, it worked great for the standard stuff such as opening files, iterating etc. - eg. I wrote "with" and automatically got "open INPUTFILE as f:". Then, when writing the main algorithm, I often disabled it because I kept getting wrong but distracting suggestions.
+For this edition I experimented using Github Copilot to assist. From my experience, it worked great for the standard stuff such as opening files, iterating etc. - eg. I wrote "with" and automatically got "open INPUTFILE as f:". Then, when writing the main algorithm, I often disabled it because I kept getting wrong but distracting suggestions. After a few puzzles I disabled it completely as it was too distracting.
 
 ## Tasks
 
