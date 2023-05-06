@@ -1,17 +1,87 @@
 #!/usr/bin/python3
 
+from collections import defaultdict
+from dataclasses import dataclass
+
 INPUTFILE="10-input.txt"
 
-def parsebot(line: str) -> None:
-    print(f"BOT: {line}")
+@dataclass
+class BotInstruction:
+    source: int
+    type1: str
+    target1: int
+    type2: str
+    target2: int
 
-def parsevalue(line: str) -> None:
-    print(f"VALUE: {line}")
+    def execute(self) -> bool:
+        global bots
+        if bots[self.source].check_and_swap():
+            print(f"Part 1: {self.source}")
+        bots[self.source].give(self.type1, self.target1, self.type2, self.target2)
 
+@dataclass
+class OutputBin:
+    chip: int = 0
+
+    def add(self, value: int) -> None:
+        self.chip=value
+
+@dataclass
+class Bot:
+    chip1: int = 0
+    chip2: int = 0
+
+    def add(self, value: int) -> None:
+        if not self.chip1:
+            self.chip1=value
+        else:
+            self.chip2=value
+
+    def is_ready(self) -> bool:
+        return self.chip1 > 0 and self.chip2 > 0
+
+    def check_and_swap(self) -> bool:
+        if self.chip1>self.chip2:
+            self.chip1, self.chip2 = self.chip2, self.chip1
+        return self.chip1==17 and self.chip2==61
+            
+
+    def give(self, type1: str, target1: int, type2: str, target2: int) -> None:
+        global bots
+        # print(f"{self.chip1} to {type1} {target1}, {self.chip2} to {type2} {target2} ")
+        if type1=="bot":
+            bots[target1].add(self.chip1)
+        else:
+            bins[target1].add(self.chip1)
+        if type2=="bot":
+            bots[target2].add(self.chip2)
+        else:
+            bins[target2].add(self.chip2)
+        self.chip1=0
+        self.chip2=0
+
+
+# MAIN
+
+bots=defaultdict(Bot)
+bins=defaultdict(OutputBin)
+instructions=[]
 
 with open(INPUTFILE) as f:
     for line in f:
-        if line.startswith("bot"):
-            parsebot(line.strip())
+        if line.startswith("value"):
+            _, value, _, _, _, botnum = line.split()
+            bots[int(botnum)].add(int(value))
         else:
-            parsevalue(line.strip())
+            _, firstbot, _, _, _, type1, target1, _, _, _, type2, target2 = line.split()        
+            instructions.append(BotInstruction(int(firstbot), type1, int(target1), type2, int(target2)) )
+
+while instructions:
+    for cmd in instructions.copy():
+        if bots[cmd.source].is_ready():
+            instructions.remove(cmd)
+            cmd.execute()
+
+
+part2 = bins[0].chip * bins[1].chip * bins[2].chip
+print(f"Part 2: {part2}")

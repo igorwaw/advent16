@@ -13,7 +13,7 @@ required because I felt like it, for others I went straight to the point.
 I solved all puzzles with Python. Tested with 3.10 and with 3.6 where possible, most should work with any Python3. I use the following
 features of modern Python:
 
-* dataclasses (introduced in 3.7) - day 1
+* dataclasses (introduced in 3.7) - day 1 and 10
 * walrus operator (introduced in 3.8) - day 4 and 7
 
 Extra Python libraries: Numpy for day 8
