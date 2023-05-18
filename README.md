@@ -1,6 +1,6 @@
 # Advent of Code 2016
 
-Advent of Code is a serious of programming puzzles: https://adventofcode.com/2022/about
+Advent of Code is a serious of programming puzzles: <https://adventofcode.com/2016/about>
 Here is my take on the 2016 edition, done well later.
 
 Feel free to use for inspiration. For some tasks I implemented more than was
@@ -10,11 +10,11 @@ required because I felt like it, for others I went straight to the point.
 
 ![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue) 
 
-I solved all puzzles with Python. Tested with 3.10 and with 3.6 where possible, most should work with any Python3. I use the following
+I solved all puzzles with Python. Tested with 3.10 and with 3.6 where possible, most should work with any Python 3. I use the following
 features of modern Python:
 
-* dataclasses (introduced in 3.7) - day 1 and 10
-* walrus operator (introduced in 3.8) - day 4 and 7
+* dataclasses (introduced in 3.7) - day 1, 10, 11
+* walrus operator (introduced in 3.8) - day 4, 7, 11
 
 Extra Python libraries: Numpy for day 8
 

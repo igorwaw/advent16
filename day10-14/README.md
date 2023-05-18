@@ -10,3 +10,4 @@ Then I iterate over the instruction queue until it's empty: if the bot is ready,
 
 Two Python features were particularly useful to make the code both shorter and more readable: data class and default dict.
 
+## Day 11: Radioisotope Thermoelectric Generators
