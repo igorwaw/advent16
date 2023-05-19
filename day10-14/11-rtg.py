@@ -17,10 +17,19 @@ rx2=re.compile(r"(\w+)-compatible")
 
 def is_valid_floor(floor: set) -> bool:
     # floor is valid if there's no generator...
-    if not [e for e in floor if e[1]=="g" ]:
+    if not [e for e in floor if e.type=="generator" ]:
         return True
     # ...or for every chip there's a relevant generator
-    return all( (e, "g") in floor for (e, device) in floor if device=="c" )
+    for device in filter(lambda x: x.type=="microchip", floor):
+        if device.name not in [ dev.name for dev in filter(lambda x: x.type=="generator", floor)]:
+            return False
+    return True
+
+
+@dataclass(frozen=True)
+class Device:
+    name: str
+    type: str
 
 @dataclass
 class Gamestate:
@@ -39,8 +48,8 @@ class Gamestate:
     def get_seen_state(self) -> str:
         retval=f"elevator:{self.elevator} "
         for i,floor in enumerate(self.floors):
-            count_chips = sum(1 for _ in filter(lambda x: x[1]=="c", floor))
-            count_rtgs = sum(1 for _ in filter(lambda x: x[1]=="g", floor))
+            count_chips = sum(1 for _ in filter(lambda x: x.type=="microchip", floor))
+            count_rtgs = sum(1 for _ in filter(lambda x: x.type=="generator", floor))
             retval+=f"floor{i}:m{count_chips}g{count_rtgs} "
         return retval
 
@@ -51,7 +60,7 @@ class Gamestate:
             print(f"Floor {i+1}: {self.floors[i]}  is valid? {is_valid_floor(self.floors[i])}")
 
 
-def get_possible_moves(state: Gamestate) -> Gamestate:
+def get_next_move(state: Gamestate) -> Gamestate:
     global max_floor
     current_floor=state.elevator
     devices_to_move=chain( combinations(state.floors[current_floor], 2), combinations(state.floors[current_floor], 1)  )
@@ -80,7 +89,7 @@ def count_moves(state: Gamestate) -> int:
         if state.is_done():
             return state.moves
         
-        for next_state in get_possible_moves(state):
+        for next_state in get_next_move(state):
             if (key := next_state.get_seen_state()) not in seen:
                 seen.add(key)
                 # next_state.print()
@@ -95,9 +104,9 @@ with open(INPUTFILE) as f:
     for i,line in enumerate(f):
         floors.append(set())
         for rtg in rx1.findall(line):
-            floors[i].add( (rtg, "g") )
+            floors[i].add( Device(rtg, "generator") )
         for chip in rx2.findall(line):
-            floors[i].add( (chip, "c") )
+            floors[i].add( Device(chip, "microchip") )
 
 current_floor=0
 max_floor=i+1
@@ -109,6 +118,7 @@ print(count_moves(gamestate))
 print("Part 2: ") #71
 # reset and add devices
 current_floor=0
-floors[0]=floors[0].union([('elerium', 'g'), ('elerium', 'c'), ('dilithium', 'g'), ('dilithium', 'c')])
+floors[0]=floors[0].union([ Device("elerium", "generator"), Device("elerium", "microchip"), 
+                            Device("dilithium", "generator"), Device("dilithium", "microchip") ])
 gamestate=Gamestate(current_floor, floors)
 print(count_moves(gamestate))
