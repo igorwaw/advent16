@@ -11,3 +11,20 @@ Then I iterate over the instruction queue until it's empty: if the bot is ready,
 Two Python features were particularly useful to make the code both shorter and more readable: data class and default dict.
 
 ## Day 11: Radioisotope Thermoelectric Generators
+
+Hardest problem so far this year. We need to move all devices to the 4th floor. RTGs emit radiation that would damage
+a chip on the same floor, unless the chip is connected to its own RTG. Elevator can only take 1 or 2 devices (not 0).
+
+The problem takes a few steps to solve:
+
+- read input and model the data,
+- check for the end condition at each iteration of the main loop,
+- get the next possible move, check if it leads to a valid condition,
+- repeat until the solution is found, in the right order (BFS) and avoiding the states that were already checked.
+
+I used dataclasses, itertools, sets, regular expressions... Can't imagine doing that in anything other then Python.
+
+## Day 12: Leonardo's Monorail
+
+We need to simulate a computer with a very simple CPU architecture: 4 registers, 4 instructions. Easy. Very similar
+to day 23 from 2015, in fact I copied some code. 
