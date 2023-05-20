@@ -48,16 +48,6 @@ def is_empty(point: Point) -> bool:
     v = point.x**2 + 3*point.x + 2*point.x*point.y + point.y + point.y**2 + FAVNUM
     return v.bit_count() %2==0
 
-def print_map():
-    print("  0123456789")
-    for y in range(7):
-        print(y,end="|")
-        for x in range(10):
-            if is_empty(Point(x,y)):
-                print(" ", end="")
-            else:
-                print("█", end="")
-        print("|")
 
 def get_next_points(p: Point) -> Point:
     global floormap
