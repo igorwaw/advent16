@@ -28,3 +28,7 @@ I used dataclasses, itertools, sets, regular expressions... Can't imagine doing 
 
 We need to simulate a computer with a very simple CPU architecture: 4 registers, 4 instructions. Easy. Very similar
 to day 23 from 2015, in fact I copied some code. 
+
+## Day 13: A Maze of Twisty Little Cubicles
+
+Finding distance on a 2D grid. Classic BFS algorithm works perfectly.
