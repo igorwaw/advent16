@@ -32,3 +32,11 @@ to day 23 from 2015, in fact I copied some code.
 ## Day 13: A Maze of Twisty Little Cubicles
 
 Finding distance on a 2D grid. Classic BFS algorithm works perfectly.
+
+## Day 14: One-Time Pad
+
+We need to generate 64 MD5 hashes. The hash is correct if it has 3 of the same characters in a row AND in the next 1000 hashes
+there's one that has the same character repeated twice. Easy. But it's clear to see that naive solution would calculate same
+hash many times. Simple solution: use cache from functools.
+
+For part 2, we need to use key stretching, each hash is looped 2016 times.
