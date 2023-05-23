@@ -10,3 +10,7 @@ steps in a moment. Computers are really fast!
 ## Day 16: Dragon Checksum
 
 Generating checksums. Nothing fancy here.
+
+## Day 17: Two Steps Forward
+
+Finding path in the vault - obvious application of BFS.

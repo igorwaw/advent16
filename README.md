@@ -8,12 +8,12 @@ required because I felt like it, for others I went straight to the point.
 
 ## Technology used
 
-![Python](https://img.shields.io/badge/python-%3E%3D3.8-blue)
+![Python](https://img.shields.io/badge/python-%3E%3D3.10-blue)
 
 I solved all puzzles with Python. Tested with 3.10, most should work with older Python 3. I used the following
 features of modern Python:
 
-* dataclasses (introduced in 3.7) - day 1, 10, 11, 13
+* dataclasses (introduced in 3.7) - day 1, 10, 11, 13, 17
 * walrus operator (introduced in 3.8) - day 4, 7, 11
 * match/case (introduced in 3.10) - day 12
 * bit_count function (introduced in 3.10) - day 13

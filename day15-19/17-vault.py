@@ -36,7 +36,8 @@ class Gamestate:
                 yield direction
 
 
-def get_path(start_point: Gamestate, end_point: Tuple[int, int]) -> str:
+def get_paths(start_point: Gamestate, end_point: Tuple[int, int]) -> None:
+    global pathlist
     to_check=deque()
     to_check.append(start_point)
     while to_check:
@@ -46,12 +47,17 @@ def get_path(start_point: Gamestate, end_point: Tuple[int, int]) -> str:
             newx=current_point.x+dir[0]
             newy=current_point.y+dir[1]
             if newx==end_point[0] and newy==end_point[1]:
-                return newpath
-            newpoint=Gamestate(newx, newy, newpath)
-            #print(f"newpoint: {newpoint}")
-            to_check.append(newpoint)
+                pathlist.append(newpath)
+            else:
+                newpoint=Gamestate(newx, newy, newpath)
+                to_check.append(newpoint)
 
 
 start=Gamestate()
 end=(4,4)
-print(f"Part 1: { get_path(start,end)  }")
+
+pathlist=[]
+get_paths(start, end)
+print(pathlist)
+print(f"Part 1: { min(pathlist, key=len)  }")
+print(f"Part 2: { len(max(pathlist, key=len))  }")
