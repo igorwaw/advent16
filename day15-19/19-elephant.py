@@ -1,55 +1,25 @@
 #!/usr/bin/python3
 
-from __future__ import annotations
+from math import log
 
 NUM_ELVES=3001330
 
-class Elf:
-    number: int = 0
-    left: Elf
-    right: Elf
-    id: int
 
-    def __init__(self, r: Elf=None) -> None:
-        self.left=None
-        self.right=r
-        Elf.number+=1
-        self.id=Elf.number
-    
-    def remove(self, debug=False) -> None:
-        self.left.right=self.right
-        self.right.left=self.left
-        Elf.number-=1
-        if debug:
-            print(f"Removing elf {self.id} elves left {Elf.number}")
+def josephus(n: int) -> int:
+    l = n - (1 << (n.bit_length() - 1))
+    return 2*l + 1
+
+def josephus2(n: int) -> int:
+    if n<3:
+        return 1
+    base=int(log(n-1,3))
+    closestpower=3**base
+    if n-closestpower <= closestpower:
+        return n-closestpower
+    return 2*n-3*closestpower
 
 
-
-def create_elves(first_elf: Elf) -> None:
-    last_elf=first_elf
-    for _ in range(NUM_ELVES-1):
-        new_elf=Elf(r=last_elf)
-        last_elf.left=new_elf
-        last_elf=new_elf
-    #make it circular
-    last_elf.left=first_elf
-    first_elf.right=last_elf
-
-def remove_elves(part2=False) -> int:
-    current_elf=first_elf
-    while Elf.number>1:
-        current_elf.left.remove()
-        current_elf=current_elf.left
-    return current_elf.id
-
-### MAIN
-
-print(f"Creating {NUM_ELVES} elves...")
-
-first_elf=Elf()
-create_elves(first_elf)
-
-print(f"Done, number of elves: {Elf.number}")
+print(f"Part 1, {josephus(NUM_ELVES)}")
+print(f"Part 2, {josephus2(NUM_ELVES)}")
 
 
-print(f"Part 1, elf left: {remove_elves(part2=False)}")
