@@ -18,7 +18,7 @@ def gethash(i: str) -> str:
 def door_open(char: str) -> bool:
     return char in "bcdef"
 
-@dataclass(frozen=True)
+@dataclass
 class Gamestate:
     x: int = 1
     y: int = 1
@@ -36,8 +36,7 @@ class Gamestate:
                 yield direction
 
 
-def get_paths(start_point: Gamestate, end_point: Tuple[int, int]) -> None:
-    global pathlist
+def get_paths(start_point: Gamestate, end_point: Tuple[int, int], pathlist: list) -> None:
     to_check=deque()
     to_check.append(start_point)
     while to_check:
@@ -56,8 +55,7 @@ def get_paths(start_point: Gamestate, end_point: Tuple[int, int]) -> None:
 start=Gamestate()
 end=(4,4)
 
-pathlist=[]
-get_paths(start, end)
-print(pathlist)
-print(f"Part 1: { min(pathlist, key=len)  }")
-print(f"Part 2: { len(max(pathlist, key=len))  }")
+paths=[]
+get_paths(start, end, paths)
+print(f"Part 1: { min(paths, key=len)  }")
+print(f"Part 2: { len(max(paths, key=len))  }")
