@@ -15,7 +15,7 @@ features of modern Python:
 
 * dataclasses (introduced in 3.7) - day 1, 10, 11, 13, 17
 * walrus operator (introduced in 3.8) - day 4, 7, 11
-* match/case (introduced in 3.10) - day 12
+* match/case (introduced in 3.10) - day 12, 21
 * bit_count function (introduced in 3.10) - day 13
 
 Extra Python libraries: Numpy for day 8
