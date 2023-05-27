@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# import md5 module
 import hashlib
 
 doorid="uqwqemis"

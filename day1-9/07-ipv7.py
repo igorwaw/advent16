@@ -12,14 +12,11 @@ rx3=re.compile(r"(\w)\1{3}") # check for "reversed pair" of same characters
 
 
 def check_tls(line):
-    if m:=rx2.search(line):
-            #print(f"Reversed pair in brackets: {m.group()}, no TLS in {line}")
+    if rx2.search(line):
             return False
-    if m:=rx3.search(line):
-            #print(f"'Reversed pair' of same characters: {m.group()}, no TLS in {line}")
+    if rx3.search(line):
             return False
-    if m:=rx1.search(line):
-            #print(f"Match found: {m.group()}  TLS in {line}")
+    if rx1.search(line):
             return True
     return False
 
