@@ -38,4 +38,19 @@ Finally, we need to move the data using the empty node, then move the empty node
 takes 5 steps. Complete formula is `(emptyx+1-wallbegin)+emptyy+wallsize+(width-1)*5`
 which at least makes the solution viable for other setups where the wall is in one
 row, extends to the right edge and the hole is down and to the right relative to the
-first node of the wall. 
+first node of the wall.
+
+## Day 23: Safe Cracking
+
+We need to find a value of a register - the assembunny code is similar to day 12, so
+it's a good starting point. For part 1, we need to add one instruction, TGL, which
+modifies a specific instruction.
+
+Part 2 is annoying, in a similar way to the previous puzzle: I can't code a universal
+solution. The code for part 1 works, but is too slow: instruction suggests we should
+implement a multiply instruction. In the input file there are two blocks that increment
+register many times, there's an inner loop with jnz -2 and outer loop with jnz -5.
+The end result is very fast (few miliseconds, while unoptimized code didn't find the
+solution in 30 minutes) but also very fragile - it would fail with another input file,
+where jnz -5 is preceded by some other instructions. But coding a real optimizer is well
+outside the scope of a puzzle.
